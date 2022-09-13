@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: licence-deployment
+  labels:
+    app: licence
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: licence
+  template:
+    metadata:
+      labels:
+        app: licence
+    spec:
+      containers:
+        - name: licence
+          image: awbd/licence:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8082
+          env:
+            - name: SPRING_CONFIG_IMPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: awbd-configmap
+                  key: SPRING_CONFIG_IMPORT
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: awbd-configmap
+                  key: SPRING_PROFILES_ACTIVE
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              valueFrom:
+                configMapKeyRef:
+                  name: awbd-configmap
+                  key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: licence-service
+spec:
+  selector:
+    app: licence
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082

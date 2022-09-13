@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: purchase-deployment
+  labels:
+    app: purchase
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: purchase
+  template:
+    metadata:
+      labels:
+        app: purchase
+    spec:
+      containers:
+        - name: purchase
+          image: awbd/purchase:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8080
+          env:
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              valueFrom:
+                configMapKeyRef:
+                  name: awbd-configmap
+                  key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+            - name: SPRING_CONFIG_IMPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: awbd-configmap
+                  key: SPRING_CONFIG_IMPORT
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: purchase-service
+spec:
+  selector:
+    app: purchase
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
