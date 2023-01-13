@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: configserver
-          image: awbd/config-server:0.0.1-SNAPSHOT
+          image: gabicatalin98/config-server:0.0.1-SNAPSHOT
           ports:
             - containerPort: 8072
 ---
