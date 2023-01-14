@@ -3,6 +3,7 @@ package com.awbd.licence.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @Table(name = "licence")
 @Entity
-public class Licence {
+public class Licence extends RepresentationModel<Licence> {
 
 
     @Id
