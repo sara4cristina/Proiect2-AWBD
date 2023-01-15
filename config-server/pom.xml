@@ -46,12 +46,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!--configuration>
+				<configuration>
 					<image>
-						<name>awbd/${project.artifactId}:${project.version}</name>
+						<name>sara4cristina/${project.artifactId}:${project.version}</name>
 						<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 					</image>
-				</configuration-->
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
