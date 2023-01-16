@@ -1,9 +1,11 @@
 com\awbd\licence\controllers\CustomizedExceptionHandler.class
 com\awbd\licence\exceptions\LicenceNotFound.class
-com\awbd\licence\controllers\Controller.class
-com\awbd\licence\model\Licence.class
-com\awbd\licence\config\PropertiesConfig.class
 com\awbd\licence\exceptions\ExceptionPattern.class
 com\awbd\licence\LicenceApplication.class
-com\awbd\licence\repo\LicenceRepository.class
+com\awbd\licence\controllers\LicenceController.class
 com\awbd\licence\service\LicenceService.class
+com\awbd\licence\service\LicenceServiceImpl.class
+com\awbd\licence\config\SwaggerConfig.class
+com\awbd\licence\model\Licence.class
+com\awbd\licence\config\PropertiesConfig.class
+com\awbd\licence\repo\LicenceRepository.class

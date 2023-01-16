@@ -64,14 +64,13 @@ public class PurchaseController {
     }
 
     @GetMapping("/purchase/car/{car}/type/{type}")
-    Purchase findByCoachAndSport(@PathVariable String car,
-                                     @PathVariable String type) {
+    Purchase findByCarAndType(@PathVariable String car,
+                              @PathVariable String type) {
         Purchase purchase = purchaseService.findByCarAndType(car, type);
         Link selfLink = linkTo(methodOn(PurchaseController.class).getPurchase(purchase.getId())).withSelfRel();
         purchase.add(selfLink);
         return purchase;
     }
-
 
     @PostMapping("/purchase")
     @CircuitBreaker(name="licenceById", fallbackMethod = "savePurchaseFallback")

@@ -24,6 +24,7 @@ public class LicenceServiceImpl implements LicenceService{
     @Override
     public Licence findByType(String type) {
         Licence licence = licenceRepository.findByType(type);
+        licence.setPrice(licence.getPrice() - licence.getPrice()*configuration.getDiscount()/100);
         return licence;
     }
 

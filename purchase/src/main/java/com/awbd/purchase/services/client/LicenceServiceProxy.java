@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(value = "licence")
 public interface LicenceServiceProxy {
-    @GetMapping(value="/licence/{idLicence}", consumes = "application/json")
-    Licence findLicenceByType(@PathVariable String idLicence);
+    @GetMapping(value="/licence/type/{type}", consumes = "application/json")
+    Licence findLicenceByType(@PathVariable String type);
 }
