@@ -16,15 +16,9 @@ spec:
     spec:
       containers:
         - name: eureka
-          image: sara4cristina/eureka-namingserver:0.0.1-SNAPSHOT
+          image: sara4cristina/eureka-namingserver:0.0.2-SNAPSHOT
           ports:
             - containerPort: 8071
-          env:
-            - name: SPRING_CONFIG_IMPORT
-              valueFrom:
-                configMapKeyRef:
-                  name: sara4cristina-configmap
-                  key: SPRING_CONFIG_IMPORT
 ---
 apiVersion: v1
 kind: Service

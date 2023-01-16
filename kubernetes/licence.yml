@@ -16,20 +16,10 @@ spec:
     spec:
       containers:
         - name: licence
-          image: sara4cristina/licence:0.0.1-SNAPSHOT
+          image: sara4cristina/licence:0.0.2-SNAPSHOT
           ports:
             - containerPort: 8082
           env:
-            - name: SPRING_CONFIG_IMPORT
-              valueFrom:
-                configMapKeyRef:
-                  name: sara4cristina-configmap
-                  key: SPRING_CONFIG_IMPORT
-            - name: SPRING_PROFILES_ACTIVE
-              valueFrom:
-                configMapKeyRef:
-                  name: sara4cristina-configmap
-                  key: SPRING_PROFILES_ACTIVE
             - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               valueFrom:
                 configMapKeyRef:
